@@ -1,0 +1,22 @@
+{
+  "name": "@expat/xeno-design-system",
+  "version": "1.0.0",
+  "description": "Design system for expat.gr project",
+  "main": "config.js",
+  "scripts": {
+    "tokens": "yarn tokens:transform && yarn tokens:style-dictionary && yarn tokens:clean",
+    "tokens:style-dictionary": "ts-node ./src/tokens/config.ts",
+    "tokens:transform": "token-transformer ./src/tokens/tokens.json ./src/tokens/converted.json --resolveReferences='math' --throwErrorWhenNotResolved=true",
+    "tokens:clean": "rimraf ./src/tokens/converted.json"
+  },
+  "author": "Irina Illsutrova",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/tinycolor2": "^1.4.3",
+    "lodash": "^4.17.21",
+    "rimraf": "^3.0.2",
+    "style-dictionary": "^3.7.0",
+    "tinycolor2": "^1.4.2",
+    "ts-node": "^10.8.0"
+  }
+}
