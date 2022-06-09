@@ -1,6 +1,5 @@
 name: Process Figma Tokens PR
 
-# on: pull_request
 on: 
   push:
     branches:
@@ -9,6 +8,7 @@ on:
       - 'src/tokens/tokens.json'
 jobs:
   run_if: # only if base branch is "figma-tokens"
+    if: ${{ github.head_ref == 'figma-tokens' }}
     name: Process Figma Tokens
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -19,30 +19,35 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
         
-      - name: Install Dependencies
-        run: yarn
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        id: yrn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+          
+      - name: Install dependencies
+        run: |
+          yarn install
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
 
       - name: Run token-transformer
         run: yarn tokens
         
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
         
       - name: Create PR 
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Tokens updated"
-          title: "Design tokens update"
-          body: "New design tokens were pushed automatically via Figma Tokens plugin. Please review and confirm the changes"
-          branch: design-tokens-${{ steps.date.outputs.date }}
+          title: "Design tokens updated"
+          body: "Design tokens have been updated via Figma and need to be reviewed."
+          branch: design-tokens-review
           base: main
 
-      # - name: Commit changes
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     author_name: Github Actions
-      #     author_email: illustrova@gmail.com
-      #     message: 'tokens: add processed files'
-      #     add: '.'
