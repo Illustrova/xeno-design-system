@@ -32,9 +32,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Tokens updated"
-          title: "Design tokens updated"
-          body: "Design tokens have been updated via Figma and need to be reviewed."
-          branch: design-tokens-review
+          title: "Design tokens update"
+          body: "New design tokens were pushed automatically via Figma Tokens plugin. Please review and confirm the changes"
+          branch: design-tokens-${{ github.event.repository.updated_at}}
           base: main
 
       # - name: Commit changes
