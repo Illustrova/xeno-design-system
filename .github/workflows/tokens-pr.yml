@@ -9,7 +9,6 @@ on:
       - 'src/tokens/tokens.json'
 jobs:
   run_if: # only if base branch is "figma-tokens"
-    if: ${{ github.head_ref == 'figma-tokens' }}
     name: Process Figma Tokens
     runs-on: ubuntu-latest
     timeout-minutes: 5
