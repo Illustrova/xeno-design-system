@@ -25,6 +25,9 @@ jobs:
       - name: Run token-transformer
         run: yarn tokens
         
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
         
       - name: Create PR 
         uses: peter-evans/create-pull-request@v4
@@ -33,7 +36,7 @@ jobs:
           commit-message: "Tokens updated"
           title: "Design tokens update"
           body: "New design tokens were pushed automatically via Figma Tokens plugin. Please review and confirm the changes"
-          branch: design-tokens-${{ github.event.repository.updated_at}}
+          branch: design-tokens-${{ steps.date.outputs.date }}
           base: main
 
       # - name: Commit changes
