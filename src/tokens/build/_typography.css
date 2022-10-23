@@ -1,9 +1,18 @@
 /**
  * Do not edit directly
- * Generated on Thu, 09 Jun 2022 06:25:39 GMT
+ * Generated on Sun, 23 Oct 2022 19:37:58 GMT
  */
 
 :root {
+  --font-size-font-size-8: 96px;
+  --font-size-font-size-7: 60px;
+  --font-size-font-size-6: 48px;
+  --font-size-font-size-5: 34px;
+  --font-size-font-size-4: 24px;
+  --font-size-font-size-3: 20px;
+  --font-size-font-size-2: 16px;
+  --font-size-font-size-1: 14px;
+  --font-size-font-size-0: 12px;
   --text-decoration-text-decoration-none: none;
   --text-case-text-case-none: none;
   --text-case-text-case-uppercase: uppercase;
@@ -19,6 +28,8 @@
   --font-size-font-sizes-h3: 48px;
   --font-size-font-sizes-h2: 60px;
   --font-size-font-sizes-h1: 96px;
+  --font-weight-font-weights-roboto-1: Medium;
+  --font-weight-font-weights-roboto-0: Regular;
   --font-weight-font-weights-body-medium: Medium;
   --font-weight-font-weights-body-regular: Regular;
   --font-weight-font-weights-body-light: Light;
@@ -32,7 +43,8 @@
   --letter-spacing-letter-spacing-decreased: -5%;
   --letter-spacing-letter-spacing-increased: 150%;
   --letter-spacing-letter-spacing-default: 0px;
-  --letter-spacing-letter-spacing-1: -5%;
+  --letter-spacing-letter-spacing-2: -5%;
+  --letter-spacing-letter-spacing-1: 2%;
   --letter-spacing-letter-spacing-0: 0%;
   --line-height-line-heights-body: 140%;
   --line-height-line-heights-heading: 110%;

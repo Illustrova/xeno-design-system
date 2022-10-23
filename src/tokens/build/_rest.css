@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 09 Jun 2022 06:25:39 GMT
+ * Generated on Sun, 23 Oct 2022 19:37:58 GMT
  */
 
 :root {
@@ -15,4 +15,6 @@
   --border-radius-border-radius-xl: 16px;
   --border-radius-border-radius-lg: 8px;
   --border-radius-border-radius-sm: 4px;
+  --other-token-set-order-1: Purple;
+  --other-token-set-order-0: main;
 }
