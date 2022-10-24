@@ -1,6 +1,5 @@
 name: Process Figma Tokens PR
 
-# on: pull_request
 on: 
   push:
     branches:
@@ -8,9 +7,7 @@ on:
     paths:
       - 'src/tokens/tokens.json'
 jobs:
-  run_if: # only if base branch is "figma-tokens"
-    if: ${{ github.head_ref == 'figma-tokens' }}
-    name: Process Figma Tokens
+  process_tokens:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -20,8 +17,23 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
         
-      - name: Install Dependencies
-        run: yarn
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        id: yrn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+          
+      - name: Install dependencies
+        run: |
+          yarn install
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
 
       - name: Run token-transformer
         run: yarn tokens
@@ -37,10 +49,3 @@ jobs:
           branch: design-tokens-review
           base: main
 
-      # - name: Commit changes
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     author_name: Github Actions
-      #     author_email: illustrova@gmail.com
-      #     message: 'tokens: add processed files'
-      #     add: '.'
