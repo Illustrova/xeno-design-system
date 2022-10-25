@@ -1,4 +1,8 @@
 export const tokens = {
+  tokenSetOrder: {
+    /** main */
+    "0": "main",
+  },
   borderRadius: {
     /** 4 */
     sm: "4",
