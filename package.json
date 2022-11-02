@@ -2,16 +2,16 @@
   "name": "@expat/xeno-design-system",
   "version": "1.0.0",
   "description": "Design system for expat.gr project",
-  "main": "./lib/index.umd.js",
-  "module": "./lib/index.es.js",
-  "types": "./lib/index.d.ts",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "lib"
   ],
   "exports": {
     ".": {
-      "import": "./lib/index.es.js",
-      "require": "./lib/index.umd.js"
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
     }
   },
   "scripts": {
@@ -28,6 +28,7 @@
     "lint:types": "tsc --project tsconfig.lint.json",
     "test": "jest",
     "test:ci": "jest --ci --testTimeout=15000 --reporters=default --reporters=jest-junit --coverage",
+    "build": "vite build src/ && tsc --emitDeclarationOnly",
     "prepare": "husky install"
   },
   "author": "Irina Illustrova",

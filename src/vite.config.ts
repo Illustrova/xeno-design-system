@@ -8,10 +8,10 @@ import svgr from 'vite-plugin-svgr';
 export default defineConfig({
   build: {
     emptyOutDir: true,
-    outDir: '../lib',
+    outDir: '../dist',
     lib: {
       entry: path.resolve(__dirname, 'index.ts'),
-      name: 'component-library',
+      name: 'xeno',
       fileName: format => `index.${format}.js`,
     },
     rollupOptions: {
