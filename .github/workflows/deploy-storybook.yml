@@ -50,7 +50,7 @@ jobs:
       - name: Deploy Storybook
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ./storybook-static
+          folder: ./build
           branch: gh-pages
           clean: true
           clean-exclude: |
