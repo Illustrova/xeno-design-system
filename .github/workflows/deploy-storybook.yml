@@ -46,7 +46,7 @@ jobs:
           yarn storybook:build
           
       - name: Deploy Storybook
-        ujamesives deploses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: ./storybook-static
           branch: gh-pages
