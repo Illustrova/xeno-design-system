@@ -1,0 +1,55 @@
+name: Deploy Storybook
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'src'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        id: yrn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: |
+          yarn --frozen-lockfile
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+
+      - name: Build design tokens
+        run: |
+          yarn tokens
+          
+      - name: Build Storybook
+        run: |
+          yarn storybook:build
+          
+      - name: Deploy Storybook
+        ujamesives deploses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ./storybook-static
+          branch: gh-pages
+          clean: true
+          clean-exclude: |
+            pr:**/*
