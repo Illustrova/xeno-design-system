@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src", "utils", ".storybook/*.tsx"],
+  "exclude": [],
+  "compilerOptions": {
+    "noUnusedLocals": true,
+    "noEmit": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "extends": [
+    ".eslintrc-component-library.json", // Repo-specific adaptions
+    ".eslintrc-a11y.json", // a11y specific rules
+    "plugin:prettier/recommended" // Prettier must be the last extension
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.lint.json",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "ignorePatterns": ["!.storybook"]
+}

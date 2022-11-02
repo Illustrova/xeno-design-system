@@ -1,0 +1,15 @@
+{
+  "files": ["./src/**/*.ts{,x}"],
+  "formats": [
+    {
+      "name": "stylish",
+      "output": "console"
+    },
+    {
+      "name": "json",
+      "output": "file",
+      "path": "report.json"
+    }
+  ],
+  "eslintConfig": {}
+}

@@ -1,0 +1,180 @@
+{
+  "plugins": ["jest", "react", "react-hooks", "testing-library", "jest-dom", "import"],
+  "extends": [
+    // Additional functionality only relevant for this repo
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended",
+    "plugin:jest/recommended",
+    "plugin:jest/style",
+    "plugin:eslint-comments/recommended",
+    "plugin:storybook/recommended",
+    "plugin:storybook/csf-strict",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "no-console": "warn",
+    "@typescript-eslint/no-require-imports": "error",
+    "@typescript-eslint/prefer-for-of": "error",
+    // typescript is enough for this
+    "react/prop-types": "off",
+    // New rules which do not work with jest and some other code parts
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/no-unsafe-return": "off",
+    "@typescript-eslint/no-unsafe-argument": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    // We need nullish for className combinations, the others don't hurt
+    "@typescript-eslint/restrict-template-expressions": [
+      "error",
+      {
+        "allowNumber": true,
+        "allowBoolean": true,
+        "allowNullish": true
+      }
+    ],
+    // sometimes, TS errors need to be suppressed due to the interaction with external packages
+    "@typescript-eslint/ban-ts-comment": [
+      "error",
+      {
+        "ts-expect-error": "allow-with-description"
+      }
+    ],
+    // Jest-specific rules
+    "jest/expect-expect": [
+      "warn",
+      {
+        "assertFunctionNames": ["expect*"]
+      }
+    ],
+    "jest/no-conditional-expect": "off",
+    // JSX-/React-specific rules
+    "react/no-danger": ["error"],
+    "react/jsx-fragments": ["error", "syntax"],
+    "react/jsx-pascal-case": ["error"],
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".jsx", ".tsx"]
+      }
+    ],
+    "react/jsx-curly-brace-presence": [
+      "error",
+      {
+        "props": "ignore",
+        "children": "never"
+      }
+    ],
+    "react/self-closing-comp": ["error"],
+    // we would like our objects (in particular the classes in create_styles) sorted
+    "sort-keys": [
+      "error",
+      "asc",
+      {
+        "minKeys": 5
+      }
+    ],
+    // We name constants in all caps and Material UI requires some additional leniency
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "objectLiteralProperty",
+        "format": null
+      },
+      {
+        "selector": "variableLike",
+        "leadingUnderscore": "allow",
+        "format": ["camelCase", "PascalCase"]
+      },
+      {
+        "selector": "memberLike",
+        "format": ["camelCase", "PascalCase", "UPPER_CASE"]
+      },
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase"]
+      },
+      {
+        "selector": "variable",
+        "format": ["camelCase", "PascalCase", "UPPER_CASE"]
+      },
+      {
+        "selector": "method",
+        "format": ["camelCase"]
+      }
+    ],
+    // enforce an import order
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "groups": [
+          ["builtin", "external"],
+          ["index", "sibling", "parent", "internal"]
+        ],
+        "newlines-between": "always"
+      }
+    ],
+    "import/no-default-export": "error",
+    // queryByRole is significantly slower than other RTL queries, so we need the direct node access in various places
+    "testing-library/no-node-access": "off",
+    "react/no-unstable-nested-components": "error",
+    "react/boolean-prop-naming": ["error", { "validateNested": true }],
+    "react/jsx-handler-names": "error",
+    "react/jsx-sort-props": [
+      "warn",
+      {
+        "callbacksLast": true,
+        "shorthandLast": true
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/vite.config.ts"],
+      "rules": {
+        "import/no-default-export": "off",
+        "@typescript-eslint/naming-convention": "off"
+      }
+    },
+    {
+      "files": ["**/*.test.ts", "**/*.test.tsx"],
+      // Our test naming conventions are different
+      "env": {
+        "jest": true
+      },
+      "rules": {
+        "max-lines-per-function": "off",
+        // To use imperfect mocks in tests, typescript errors sometimes need to be ignored
+        "@typescript-eslint/ban-ts-comment": [
+          "error",
+          {
+            "ts-expect-error": false
+          }
+        ],
+        // eslint assumes act returns a promise, which it only does with an async callback
+        "@typescript-eslint/no-floating-promises": "off",
+        // New rules that we should implement at a later point (Task #42588)
+        "testing-library/no-render-in-setup": "off",
+        "testing-library/no-wait-for-multiple-assertions": "off"
+      }
+    },
+    {
+      "files": ["**/*.stories.tsx"],
+      "rules": {
+        "import/no-default-export": "off"
+      }
+    }
+  ]
+}
