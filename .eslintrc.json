@@ -10,5 +10,4 @@
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint"],
-  "ignorePatterns": ["!.storybook"]
 }
