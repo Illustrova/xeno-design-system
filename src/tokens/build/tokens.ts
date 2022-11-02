@@ -1,4 +1,8 @@
 export const tokens = {
+  tokenSetOrder: {
+    /** main */
+    "0": "main",
+  },
   borderRadius: {
     /** 4 */
     sm: '4',
@@ -39,7 +43,9 @@ export const tokens = {
   },
   lineHeights: {
     /** 110% */
-    '0': '110%',
+    "0": "110%",
+    /** AUTO */
+    "1": "AUTO",
     /** 110% */
     heading: '110%',
     /** 140% */
@@ -678,6 +684,18 @@ export const tokens = {
       fontSize: '20',
       /** -5% */
       letterSpacing: '-5%',
+    },
+    Button: {
+      /** Roboto */
+      fontFamily: "Roboto",
+      /** Regular */
+      fontWeight: "Regular",
+      /** AUTO */
+      lineHeight: "AUTO",
+      /** 14 */
+      fontSize: "14",
+      /** 2% */
+      letterSpacing: "2%",
     },
   },
 };
