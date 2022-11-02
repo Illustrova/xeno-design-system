@@ -28,6 +28,11 @@ module.exports = {
       '@emotion/core': path.resolve(path.join(__dirname, '../node_modules/@emotion/react')),
       'emotion-theming': path.resolve(path.join(__dirname, '../node_modules/@emotion/react')),
     };
+
+    if (process.env.BASE_URL) {
+      config.base = process.env.BASE_URL;
+    }
+
     return config;
   },
 };
