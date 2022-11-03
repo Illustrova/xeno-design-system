@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import * as stories from './Button.stories';
 
-const { Standard: Button } = composeStories(stories);
+const { Playground: Button } = composeStories(stories);
 
 describe('The Button', () => {
   it('render without crash', () => {

@@ -50,7 +50,7 @@ export const mainTheme = createTheme({
     shadows.elevation3, // MUI default elevation for dialogs
   ],
   shape: {
-    borderRadius: Number(tokens.borderRadius.lg) ?? 0,
+    borderRadius: Number(tokens.borderRadius.sm) ?? 0,
   },
   spacing: 4,
   typography: {
@@ -61,6 +61,45 @@ export const mainTheme = createTheme({
 // do this automatically
 mainTheme.components = {
   ...mainTheme.components,
+
+  MuiButton: {
+    defaultProps: {
+      disableElevation: true,
+      disableRipple: true,
+    },
+    styleOverrides: {
+      root: {
+        ...mainTheme.typography.button,
+        borderRadius: mainTheme.shape.borderRadius,
+        padding: `${mainTheme.spacing(2)} ${mainTheme.spacing(6)}`,
+        // textTransform: 'none',
+      },
+      contained: {
+        root: {
+          ...mainTheme.typography.button,
+        },
+        '&:hover': {
+          borderColor: mainTheme.palette.primary.dark,
+        },
+        '&.Mui-disabled': {
+          borderColor: mainTheme.palette.action.disabledBackground,
+        },
+      },
+      outlined: {
+        root: {
+          ...mainTheme.typography.button,
+        },
+        '&:hover': {
+          background: 'transparent',
+          color: mainTheme.palette.primary.dark,
+          borderColor: mainTheme.palette.primary.dark,
+        },
+        '&.Mui-disabled': {
+          borderColor: mainTheme.palette.action.disabled,
+        },
+      },
+    },
+  },
 };
 
 export const Provider: React.FC = ({ children }) => (
