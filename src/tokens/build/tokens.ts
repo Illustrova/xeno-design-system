@@ -1,7 +1,7 @@
 export const tokens = {
   tokenSetOrder: {
     /** main */
-    "0": "main",
+    '0': 'main',
   },
   borderRadius: {
     /** 4 */
@@ -43,9 +43,9 @@ export const tokens = {
   },
   lineHeights: {
     /** 110% */
-    "0": "110%",
+    '0': '110%',
     /** 100% */
-    "1": "100%",
+    '1': '100%',
     /** 110% */
     heading: '110%',
     /** 140% */
@@ -536,8 +536,8 @@ export const tokens = {
       fontWeight: 'Medium',
       /** 110% */
       lineHeight: '110%',
-      /** 96 */
-      fontSize: '96',
+      /** 96px */
+      fontSize: '96px',
       /** -5% */
       letterSpacing: '-5%',
     },
@@ -548,8 +548,8 @@ export const tokens = {
       fontWeight: 'Regular',
       /** 110% */
       lineHeight: '110%',
-      /** 16 */
-      fontSize: '16',
+      /** 16px */
+      fontSize: '16px',
       /** 0% */
       letterSpacing: '0%',
     },
@@ -560,8 +560,8 @@ export const tokens = {
       fontWeight: 'Regular',
       /** 110% */
       lineHeight: '110%',
-      /** 14 */
-      fontSize: '14',
+      /** 14px */
+      fontSize: '14px',
       /** 0% */
       letterSpacing: '0%',
     },
@@ -572,8 +572,8 @@ export const tokens = {
       fontWeight: 'Regular',
       /** 110% */
       lineHeight: '110%',
-      /** 16 */
-      fontSize: '16',
+      /** 16px */
+      fontSize: '16px',
       /** 0% */
       letterSpacing: '0%',
     },
@@ -584,8 +584,8 @@ export const tokens = {
       fontWeight: 'Regular',
       /** 110% */
       lineHeight: '110%',
-      /** 14 */
-      fontSize: '14',
+      /** 14px */
+      fontSize: '14px',
       /** 0% */
       letterSpacing: '0%',
     },
@@ -593,11 +593,11 @@ export const tokens = {
       /** Roboto */
       fontFamily: 'Roboto',
       /** Regular */
-      fontWeight: "Regular",
+      fontWeight: 'Regular',
       /** 100% */
-      lineHeight: "100%",
-      /** 14 */
-      fontSize: '14',
+      lineHeight: '100%',
+      /** 14px */
+      fontSize: '14px',
       /** 2% */
       letterSpacing: '2%',
     },
@@ -608,8 +608,8 @@ export const tokens = {
       fontWeight: 'Regular',
       /** 110% */
       lineHeight: '110%',
-      /** 12 */
-      fontSize: '12',
+      /** 12px */
+      fontSize: '12px',
       /** 0% */
       letterSpacing: '0%',
     },
@@ -620,8 +620,8 @@ export const tokens = {
       fontWeight: 'Regular',
       /** 110% */
       lineHeight: '110%',
-      /** 12 */
-      fontSize: '12',
+      /** 12px */
+      fontSize: '12px',
       /** 0% */
       letterSpacing: '0%',
     },
@@ -632,8 +632,8 @@ export const tokens = {
       fontWeight: 'Medium',
       /** 110% */
       lineHeight: '110%',
-      /** 60 */
-      fontSize: '60',
+      /** 60px */
+      fontSize: '60px',
       /** -5% */
       letterSpacing: '-5%',
     },
@@ -644,8 +644,8 @@ export const tokens = {
       fontWeight: 'Medium',
       /** 110% */
       lineHeight: '110%',
-      /** 48 */
-      fontSize: '48',
+      /** 48px */
+      fontSize: '48px',
       /** -5% */
       letterSpacing: '-5%',
     },
@@ -656,8 +656,8 @@ export const tokens = {
       fontWeight: 'Medium',
       /** 110% */
       lineHeight: '110%',
-      /** 34 */
-      fontSize: '34',
+      /** 34px */
+      fontSize: '34px',
       /** -5% */
       letterSpacing: '-5%',
     },
@@ -668,8 +668,8 @@ export const tokens = {
       fontWeight: 'Medium',
       /** 110% */
       lineHeight: '110%',
-      /** 24 */
-      fontSize: '24',
+      /** 24px */
+      fontSize: '24px',
       /** -5% */
       letterSpacing: '-5%',
     },
@@ -680,8 +680,8 @@ export const tokens = {
       fontWeight: 'Medium',
       /** 110% */
       lineHeight: '110%',
-      /** 20 */
-      fontSize: '20',
+      /** 20px */
+      fontSize: '20px',
       /** -5% */
       letterSpacing: '-5%',
     },

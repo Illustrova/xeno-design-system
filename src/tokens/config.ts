@@ -1,9 +1,19 @@
 import _ from 'lodash';
 import StyleDictionary, { TransformedTokens } from 'style-dictionary';
+function throwSizeError(name: string, value: string, unitType: string) {
+  throw `Invalid Number: '${name}: ${value}' is not a valid number, cannot transform to '${unitType}' \n`;
+}
 
-/*
- * TRANSFORMS
- */
+StyleDictionary.registerTransform({
+  type: 'value',
+  name: 'typography/fontSize/px',
+  matcher: token => token?.attributes?.category == 'typography' && token?.attributes?.item === 'fontSize',
+  transformer: function (token) {
+    const val = parseFloat(token.value);
+    if (isNaN(val)) throwSizeError(token.name, token.value, 'px');
+    return val + 'px';
+  },
+});
 StyleDictionary.registerFormat({
   name: 'js/object/comments',
   formatter: ({ dictionary }) => {
@@ -39,7 +49,7 @@ const options = {
   source: ['src/tokens/converted.json'],
   platforms: {
     js: {
-      transformGroup: 'js',
+      transforms: ['attribute/cti', 'name/cti/pascal', 'color/css', 'typography/fontSize/px'],
       buildPath: './src/tokens/build/',
       files: [
         {
