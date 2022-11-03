@@ -1,7 +1,7 @@
 export const tokens = {
   tokenSetOrder: {
     /** main */
-    '0': 'main',
+    "0": "main",
   },
   borderRadius: {
     /** 4 */
@@ -43,9 +43,9 @@ export const tokens = {
   },
   lineHeights: {
     /** 110% */
-    '0': '110%',
+    "0": "110%",
     /** 100% */
-    '1': '100%',
+    "1": "100%",
     /** 110% */
     heading: '110%',
     /** 140% */
@@ -514,10 +514,10 @@ export const tokens = {
       hover: '#ffffff14',
       /** #ffffff1f */
       focus: "#ffffff1f",
-      /** #0000000d */
-      disabledBackground: "#0000000d",
-      /** #0000004d */
-      disabled: "#0000004d",
+      /** #efefefde */
+      disabledBackground: "#efefefde",
+      /** #a8a8a8 */
+      disabled: "#a8a8a8",
       /** #ffffff */
       active: '#ffffff',
     },
@@ -593,11 +593,11 @@ export const tokens = {
       /** Roboto */
       fontFamily: 'Roboto',
       /** Regular */
-      fontWeight: 'Regular',
+      fontWeight: "Regular",
       /** 100% */
-      lineHeight: '100%',
-      /** 14px */
-      fontSize: '14px',
+      lineHeight: "100%",
+      /** 14 */
+      fontSize: "14",
       /** 2% */
       letterSpacing: '2%',
     },
