@@ -17,7 +17,8 @@
   "scripts": {
     "start": "start-storybook -p 6006",
     "storybook:build": "build-storybook -o build",
-    "tokens": "yarn tokens:transform && yarn tokens:style-dictionary && prettier --write \"./src/tokens/build\" && yarn tokens:clean",
+    "tokens": "yarn tokens:transform && yarn tokens:style-dictionary && yarn tokens:format && yarn tokens:clean",
+    "tokens:format": "eslint --fix \"./src/tokens/build\" && prettier --write \"./src/tokens/build\"",
     "tokens:style-dictionary": "ts-node ./src/tokens/config.ts",
     "tokens:transform": "token-transformer ./src/tokens/tokens.json ./src/tokens/converted.json --expandTypography=true --throwErrorWhenNotResolved=true",
     "tokens:clean": "rimraf ./src/tokens/converted.json",
