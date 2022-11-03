@@ -513,11 +513,11 @@ export const tokens = {
       /** #ffffff14 */
       hover: '#ffffff14',
       /** #ffffff1f */
-      focus: '#ffffff1f',
-      /** #ffffff1f */
-      disabledBackground: '#ffffff1f',
-      /** #00000042 */
-      disabled: '#00000042',
+      focus: "#ffffff1f",
+      /** #0000000d */
+      disabledBackground: "#0000000d",
+      /** #0000004d */
+      disabled: "#0000004d",
       /** #ffffff */
       active: '#ffffff',
     },
